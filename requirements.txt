@@ -1,5 +1,5 @@
 gymnasium>=1.2.3
 numpy>=2.4.4
-pyglet<=1.5.21,>=1.4.0
+pyglet>=2.1.14
 tqdm>=4.48.2
 twine>=1.11.0
