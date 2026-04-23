@@ -1,0 +1,35 @@
+[tools]
+python = "3.14"
+uv = "latest"
+
+[settings]
+python.uv_venv_auto = "create|source"
+
+[tasks.setup]
+description = "Install the project and development tools with uv"
+alias = ["bootstrap", "install"]
+run = "uv sync --extra dev"
+
+[tasks.test]
+description = "Run the unit test suite through uv"
+run = "uv run python -m unittest discover ."
+
+[tasks.build]
+description = "Build source and wheel distributions with uv"
+run = "uv build"
+
+[tasks.clean]
+description = "Remove build artifacts"
+run = '''
+#!/usr/bin/env bash
+rm -rf build dist .eggs
+find . -name "*.egg-info" -prune -exec rm -rf {} +
+find . -name "*.pyc" -delete
+find . -name "__pycache__" -type d -prune -exec rm -rf {} +
+find . -name ".sconsign.dblite" -delete
+find . -name "lib_nes_env*.so" -delete
+'''
+
+[tasks.ci]
+description = "Run the standard local verification steps"
+depends = ["test", "build"]

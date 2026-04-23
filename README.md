@@ -22,7 +22,7 @@
 [python-version]: https://img.shields.io/pypi/pyversions/nes-py.svg
 [python-home]: https://python.org
 
-nes-py is an NES emulator and OpenAI Gym interface for MacOS, Linux, and
+nes-py is an NES emulator and Gymnasium interface for MacOS, Linux, and
 Windows based on the [SimpleNES](https://github.com/amhndu/SimpleNES) emulator.
 
 <table align="center">
@@ -166,6 +166,27 @@ There you will find instructions for:
 -   designing environments based on the `NESEnv` class
 -   reference material for the `NESEnv` API
 -   documentation for the `nes_py.wrappers` module
+
+This fork uses `mise` + `uv` as the canonical contributor workflow.
+From the `nes-py` directory:
+
+```shell
+mise trust
+mise install
+mise run setup
+mise run test
+mise run build
+```
+
+The main local tasks are:
+
+- `mise run setup` to create/update the `uv` environment and install the
+  project with development dependencies
+- `mise run test` to execute the unit test suite
+- `mise run build` to build source and wheel distributions
+- `mise run clean` to remove build artifacts
+
+The `make` targets in this fork are thin wrappers around those `mise` tasks.
 
 # Cartridge Mapper Compatibility
 

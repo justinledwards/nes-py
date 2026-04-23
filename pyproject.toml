@@ -1,3 +1,59 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nes_py"
+version = "8.3.0"
+description = "An NES emulator and Gymnasium interface"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Christian Kauten", email = "kautencreations@gmail.com" }]
+keywords = ["NES", "Emulator", "Gymnasium"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: C++",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Games/Entertainment",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Emulators",
+]
+dependencies = [
+    "gymnasium>=1.2.3",
+    "numpy>=2.4.4",
+    "pyglet>=1.4.0,<=1.5.21",
+    "tqdm>=4.48.2",
+]
+
+[project.urls]
+Homepage = "https://github.com/Kautenja/nes-py"
+Repository = "https://github.com/Kautenja/nes-py"
+
+[project.optional-dependencies]
+dev = [
+    "build>=1.2.2",
+    "twine>=1.11.0",
+]
+
+[project.scripts]
+nes_py = "nes_py.app.cli:main"
+
+[tool.setuptools]
+zip-safe = false
+
+[tool.setuptools.packages.find]
+exclude = ["tests", "*.tests", "*.tests.*"]
+
 [tool.pyright]
 include = ["nes_py"]
 exclude = ["**/tests/**"]
